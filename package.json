@@ -1,0 +1,8 @@
+{
+  "name": "hello-aws-javascript",
+  "main": "index.js",
+  "dependencies": {
+    "@pulumi/aws": "dev",
+    "@pulumi/pulumi": "^0.16.5-dev-1542420265-gc63a99ac"
+  }
+}

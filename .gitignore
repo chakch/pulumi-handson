@@ -2,3 +2,6 @@
 .idea/pulumi-handson.iml
 .idea/workspace.xml
 .idea/*
+node_modules/
+Pulumi.serverlessBattle.yaml
+package-lock.json

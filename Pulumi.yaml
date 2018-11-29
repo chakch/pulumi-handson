@@ -1,0 +1,9 @@
+name: serverlessBattlePulumi
+runtime: nodejs
+description: Hands-on pulumi
+template:
+  description: Hands-on pulumi
+  config:
+    aws:region:
+      description: AWS Francfort region
+      default: eu-central-1
