@@ -1,13 +1,12 @@
 # pulumi-handson
-If you are here, you belive that you can code you infrastructure using your favorite programming language.
-During this journey, 
+If you are here, this means that you belive that you can code your infrastructure using your favorite programming language.
 
 ![alt text](images/architecture_lambda.png "Transcoder Architecture")
 
 
-In this hands-on we are going to read a rssFeed, convert it to MP3 and saved the feed in database.
+In this hands-on, we are going to read a rssFeed, convert it to MP3 and save the feed in database.
 
-We are going to use the folowing service:
+We will use the folowing services:
 
 - Lambda
 - CloudWatch 
@@ -24,9 +23,9 @@ So let's get started :blush:
 For this hands-on you need to install node version 8.9
 you can use node version manager to handle multiple node version
 
-the installation instruction are available here: https://github.com/creationix/nvm
+the installation instructions are available here: https://github.com/creationix/nvm
 
-To check you install: `nvm --version`
+To check your install: `nvm --version`
 
 Now you can install node 8.9.4 using : `nvm i 8.9.4`
 
@@ -42,8 +41,8 @@ To check you pulumi version: `pulumi version`
 
 Now you can checkout the projet and start coding :cloud:
 
-- In th main route of the project you have to run `npm i` to install the pulumi depencencies
-- you need also to define your Pulumi stack  `pulumi stack init` : you can call your stack `stack
+- In th main root of the project you have to run `npm i` to install the pulumi depencencies
+- you need also to define your Pulumi stack  `pulumi stack init` : you can call your stack by using the previous command
 - you need to set francfort as aws region `pulumi config set aws:region eu-central-1`
 
 ## Third Step : Fight
@@ -59,7 +58,7 @@ The function code is availaible on the package rs-reader
 - Create the RssReaderRole:
     https://pulumi.io/reference/pkg/nodejs/@pulumi/aws/iam/#Role
     https://pulumi.io/reference/pkg/nodejs/@pulumi/aws/iam/#RolePolicy
-    You can use this statements:
+    You can use these statements:
     
     > [{
             Action: "sts:AssumeRole",
@@ -79,31 +78,29 @@ The function code is availaible on the package rs-reader
     You should export the created variables.
     
 - Launch `pulumi up` to deploy the created role
-- You can check the IAM service on the AWS console: https://console.aws.amazon.com/iam/home?region=eu-central-1#/home 
+- Check the IAM service on the AWS console: https://console.aws.amazon.com/iam/home?region=eu-central-1#/home 
 - Create your function with the created role
     https://pulumi.io/reference/pkg/nodejs/@pulumi/aws/lambda/#Function
-    you should export the created function.
-- You can check the Lambda service on the AWS console: https://eu-central-1.console.aws.amazon.com/lambda/home?region=eu-central-1#/functions
+    Export the created function.
+- Check the Lambda service on the AWS console: https://eu-central-1.console.aws.amazon.com/lambda/home?region=eu-central-1#/functions
 - Create DynamoDB table:
     https://pulumi.io/reference/pkg/nodejs/@pulumi/aws/dynamodb/#Table
-    You should export the created table.
-- You can check the created table on the AWS console : https://eu-central-1.console.aws.amazon.com/dynamodb/home?region=eu-central-1
+    Export the created table.
+- Check the created table on the AWS console : https://eu-central-1.console.aws.amazon.com/dynamodb/home?region=eu-central-1
     https://eu-central-1.console.aws.amazon.com/dynamodb/home?region=eu-central-1#
-- Add the the table name to the function enviromenent Variable  
+- Add the the table name to the function environement Variable  
 - Create scheduled event to launch the function periodcally
     https://pulumi.io/reference/pkg/nodejs/@pulumi/aws/cloudwatch/#EventRule
 - Connect the scheduled event to your lambda function
     https://pulumi.io/reference/pkg/nodejs/@pulumi/aws/cloudwatch/#EventRuleEventSubscription
-    You should export the scheduled event.
+    Export the scheduled event.
 - Launch `pulumi up` to deploy the stack
 
-You can test your function: https://pulumi.io/reference/pkg/nodejs/@pulumi/aws/lambda/#Function
+- Test your function: 
 
-In your lambda function, you can test it using the test functonality available on the AWS console
+In lambda service, use the test functonality available on the AWS console to test the created function. You don't need to specify any event or data, just save the test and click on test to trigger your lambda function.
 
-You don't need to specify any event or data, just save the test and click on test to trigger your lambda function.
-
-You can select DynamoDB service and check if you have the last AWS's blog articles
+Select DynamoDB service and check if you have the latest AWS's blog articles
 
 ### Create the audio transcoder function
 
@@ -142,7 +139,7 @@ You can select DynamoDB service and check if you have the last AWS's blog articl
     the function will be triggred when new item is added to the table
     https://pulumi.io/reference/pkg/nodejs/@pulumi/aws/dynamodb/#TableEventSubscription
 
-- Add the the bucket name to the AudiTranscoder function enviromenent variable  
+- Add the the bucket name to the AudiTranscoder function environement variable  
 
 - launch `pulumi up` to update your stack
 
@@ -150,16 +147,10 @@ You can select DynamoDB service and check if you have the last AWS's blog articl
 
 ![alt text](images/next_step.png "Transcoder Architecture")
 
-Some time we need to sychronize the articles manually. To do this we are going to make http call.
+Sometimes,we need to sychronize the articles manually. To do this we make a http call.
 
 - Create an http endpoint to trigger the RssReader function
     https://pulumi.io/reference/pkg/nodejs/@pulumi/aws/apigateway/#RestApi
 
-- export the created variable
-- you can test the new feature by a simple curl
-  
-
-
-
-
-
+- Export the created variable
+- Test the new feature by a simple curl
