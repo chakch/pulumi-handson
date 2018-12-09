@@ -25,21 +25,33 @@ Use node version manager to handle multiple node versions
 
 The installation instructions are available here: https://github.com/creationix/nvm
 
-To check your install: `nvm --version`
+- Check your install: `nvm --version`
 
-Install node 8.9.4 using : `nvm i 8.9.4`
+- Install node 8.9.4 using : `nvm i 8.9.4`
 
-Check you node default version: `node --version`
+- Check you node default version: `node --version`
 
-Use the command `nvm use 8.9.4` to switch node version
+- Use this command `nvm use 8.9.4` to switch node version
+
+- Install pip: 
+
+https://pip.pypa.io/en/stable/installing/
+
+- Install AWS Command line interface
+
+`pip install awscli --upgrade --user` 
+
+- Verify that the AWS CLI installed correctly
+
+`aws --version`
 
 To Install Pulumi, Copy and paste this command in your terminal : `curl -fsSL https://get.pulumi.com | sh`
 
-Check you pulumi version: `pulumi version`
+- Check you pulumi version: `pulumi version`
 
 ## Second Step : Prepare the weapon
 
-Now you can checkout the projet and start coding :cloud:
+Checkout the projet and start coding :cloud:
 
 - In th main root of the project you have to run `npm i` to install the pulumi depencencies
 - you need also to define your Pulumi stack  `pulumi stack init` : you can call your stack by using the previous command
@@ -73,32 +85,41 @@ The function code is availaible on the package rs-reader
         Action: ["cloudwatch:*","dynamodb:*","logs:CreateLogGroup","logs:CreateLogStream","logs:PutLogEvents","logs:DescribeLogStreams"],Effect: "Allow",Resource: "*"
      }]
     
-    Your function should be able to to acces to cloudwatch and dynamoDB
+    Your function should be able to acces to cloudwatch and dynamoDB
     
     You should export the created variables.
     
 - Launch `pulumi up` to deploy the created role
+
 - Check the IAM service on the AWS console: https://console.aws.amazon.com/iam/home?region=eu-central-1#/home 
+
 - Create your function with the created role
     https://pulumi.io/reference/pkg/nodejs/@pulumi/aws/lambda/#Function
     Export the created function.
+
 - Check the Lambda service on the AWS console: https://eu-central-1.console.aws.amazon.com/lambda/home?region=eu-central-1#/functions
+
 - Create DynamoDB table:
     https://pulumi.io/reference/pkg/nodejs/@pulumi/aws/dynamodb/#Table
     Export the created table.
+
 - Check the created table on the AWS console : https://eu-central-1.console.aws.amazon.com/dynamodb/home?region=eu-central-1
     https://eu-central-1.console.aws.amazon.com/dynamodb/home?region=eu-central-1#
+
 - Add the the table name to the function environement Variable  
+
 - Create scheduled event to launch the function periodcally
     https://pulumi.io/reference/pkg/nodejs/@pulumi/aws/cloudwatch/#EventRule
+
 - Connect the scheduled event to your lambda function
     https://pulumi.io/reference/pkg/nodejs/@pulumi/aws/cloudwatch/#EventRuleEventSubscription
     Export the scheduled event.
+
 - Launch `pulumi up` to deploy the stack
 
 - Test your function: 
 
-In lambda service, use the test functonality available on the AWS console to test the created function. You don't need to specify any event or data, just save the test and click on test to trigger your lambda function.
+In lambda service, use the test functionality available on the AWS console to test the created function. You don't need to specify any event or data, just save the test and click on test to trigger your lambda function.
 
 Select DynamoDB service and check if you have the latest AWS's blog articles
 
