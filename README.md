@@ -20,22 +20,22 @@ So let's get started :blush:
 
 ## First Step : Prepare the field
 
-For this hands-on you need to install node version 8.9
-you can use node version manager to handle multiple node version
+For this hands-on, install node version 8.9
+Use node version manager to handle multiple node versions
 
-the installation instructions are available here: https://github.com/creationix/nvm
+The installation instructions are available here: https://github.com/creationix/nvm
 
 To check your install: `nvm --version`
 
-Now you can install node 8.9.4 using : `nvm i 8.9.4`
+Install node 8.9.4 using : `nvm i 8.9.4`
 
-To check you node default version: `node --version`
+Check you node default version: `node --version`
 
-You can use `nvm use 8.9.4` to switch node version
+Use the command `nvm use 8.9.4` to switch node version
 
-To Install pulumi you can copy and paste this command in your terminal : `curl -fsSL https://get.pulumi.com | sh`
+To Install Pulumi, Copy and paste this command in your terminal : `curl -fsSL https://get.pulumi.com | sh`
 
-To check you pulumi version: `pulumi version`
+Check you pulumi version: `pulumi version`
 
 ## Second Step : Prepare the weapon
 
